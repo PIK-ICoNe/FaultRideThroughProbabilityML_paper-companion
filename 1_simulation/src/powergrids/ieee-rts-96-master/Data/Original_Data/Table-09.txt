@@ -1,0 +1,44 @@
+Table 9 - Heat Rate and Incremental Heat Rate
+
+                                                        Incremental
+                                                         Heat Rate
+                                                        Calculated by
+                                           Net Plant     continuous
+Size                           Output      Heat Rate      function
+ MW    Type              Fuel     %      MW      Btu/kWh   Btu/kWh
+-----------------------------------------------------------------------
+12   Fossil Steam       #6 oil   20      2.40     16017     10179
+                                 50      6.00     12500     10330
+                                 80      9.60     11900     11668
+                                100     12.00     12000     13219
+20   Combustion Turbine #2 oil   79     15.80     15063      9859
+                                 80     16.00     15000     10139
+                                 99     19.80     14500     14272
+                                100     20.00     14499     14427
+50   Hydro                      100     50.00      Not applicable     
+76   Fossil Steam        Coal    20     15.20     17107      9548
+                                 50     38.00     12637      9966
+                                 80     60.80     11900     11576
+                                100     76.00     12000     13311
+100  Fossil Steam       #6 oil   25     25.00     12999      8089
+                                 50     50.00     10700      8708
+                                 80     80.00     10087      9420
+                                100    100.00     10000      9877
+155  Fossil Steam        Coal    35     54.25     11244      8265
+                                 60     93.00     10053      8541
+                                 80    124.00      9718      8900
+                                100    155.00      9600      9381
+197  Fossil Steam       #6 oil   35     68.95     10750      8348
+                                 60    118.20      9850      8833
+                                 80    157.60      9644      9225
+                                100    197.00      9600      9620
+350  Fossil Steam        Coal    40    140.00     10200      8402
+                                 65    227.50      9600      8896
+                                 80    280.00      9500      9244
+                                100    350.00      9500      9768
+400  Nuclear Steam        LWR    25    100.00     12751      8848
+                                 50    200.00     10825      8965
+                                 80    320.00     10170      9210
+                                100    400.00     10000      9438
+
+NOTE The hydro units have 100% capacity for the first half of the year and 90% capacity for the remainder.  Their quarterly energy distribution is as follows: 35%, 35%, 10%, 20%, where 100% is 200 GWh.

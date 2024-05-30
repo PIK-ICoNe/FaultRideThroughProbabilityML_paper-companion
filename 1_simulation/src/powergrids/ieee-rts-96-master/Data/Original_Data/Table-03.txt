@@ -1,0 +1,11 @@
+Table 3 - Daily load in Percent of Weekly Peak 
+
+Day    Peak Load
+
+Monday     93
+Tuesday   100
+Wednesday  98
+Thursday   96
+Friday     94
+Saturday   77
+Sunday     75

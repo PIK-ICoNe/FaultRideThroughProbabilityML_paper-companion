@@ -1,0 +1,15 @@
+Table 8 - Unit Start-up Heat Input
+
+Unit     Unit      Unit     Hot Start  Cold Start
+group    Size      Type      (MBTU)     (MBTU)
+         (MW)
+-------------------------------------------------
+U12       12     Oil/Steam     38        68
+U20       20     Oil/CT         5         5
+U50       50     Hydro        N/A       N/A
+U76       76     Coal/Steam   596       596
+U100     100     Oil/Steam    250       566
+U155     155     Coal/Steam   260       953
+U197     197     Oil/Steam    443       775
+U350     350     Coal/Steam  1915      4468
+U400     400     Nuclear      N/A       N/A

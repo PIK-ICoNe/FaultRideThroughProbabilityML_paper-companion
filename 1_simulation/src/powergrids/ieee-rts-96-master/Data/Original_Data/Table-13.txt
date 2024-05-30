@@ -1,0 +1,34 @@
+Table 13 - Two-Terminal DC Transmission Line Data
+(based on reference 3)
+
+Control mode:                            Power
+DC line resistance (ohm):                  5
+Power demand (MW):                       100
+Scheduled DC voltage (kV):               500
+Compounding resistance (ohm):              5
+Margin in per unit of desired DC power:  0.1
+Metered end:                             Inverter
+Line Outage Rates (Outages/yr):          Permanent = 0.22
+                                         Transient = 0.7
+Permanent Outage Duration (hours):       10
+
+Rectifier Inverter
+Converter bus:                                   113     316
+Number of bridges in series:                     4       4
+Nominal maximum firing angle:                    15      16
+Minimum steady state firing angle:               15      16
+Commutating transformer resistance/bridge (ohm): 0.0180  0.0103
+Commutating transformer reactance/bridge (ohm):  4.539   4.939
+Primary base AC voltage (kV):                    230     230
+Transformer ratio:                               0.46    0.46
+Tap setting:                                     1.15452 0.97987
+Max tap setting:                                 1.15452 1.17500
+Min tap setting:                                 0.97996 0.97987
+Rectifier tap step:                              0.0050  0.0050
+
+The terminal equipment will have the following capacity table:
+   Capacity (%)          Prob     lambda (event/yr) Dur. (hr.)
+0  <= capacity <  50    0.0179        6.03            26.00
+50 <= capacity <  75    0.0747       54.97            11.90
+75 <= capacity < 100    0.0007        1.08             5.77
+Capacity = 100          0.9067       52.88           150.20

@@ -1,0 +1,15 @@
+Table 11 -  Unit Emissions Data
+
+IEEE-RTS Unit Group     U20     U12,U100,U197     U76,U155,U350
+Unit type                GT           ST                ST
+Fuel type                FO2          FO6         Bituminous Coal
+Fuel sulfur content (%)  0.2     Unit-Specific     Unit-specific
+Emissions Rate            
+SO2 (Lbs/MMBTU)          0.2     Unit-specific     Unit-specific
+NOX (Lbs/MMBTU)          0.5          0.5          Unit-specific
+Part (Lbs/MMBTU)         0.036        0.1          Unit-specific
+CO2 (Lbs/MMBTU)        160          170               210
+CH4 (Lbs/MMBTU)          0.002        0.002             0.001
+N2O (Lbs/MMBTU)          0.004        0.004             0.004
+CO (Lbs/MMBTU)           0.11         0.04              0.02
+VOCs (Lbs/MMBTU)         0.04         0.007             0.003

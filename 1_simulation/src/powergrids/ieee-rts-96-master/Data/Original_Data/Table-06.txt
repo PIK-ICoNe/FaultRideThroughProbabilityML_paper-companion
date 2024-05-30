@@ -1,0 +1,15 @@
+Table 6 - Generator Reliability Data
+
+         Unit                 Forced
+Unit     Size       Unit      Outage    MTTF    MTTR Scheduled Maintenance
+Group    (MW)       Type       Rate    (Hour)  (Hour)     Weeks per year
+-------------------------------------------------------------------------
+U12       12     Oil/Steam     0.02     2940     60             2
+U20       20     Oil/CT        0.10     450      50             2
+U50       50     Hydro         0.01     1980     20             2
+U76       76     Coal/Steam    0.02     1960     40             3
+U100     100     Oil/Steam     0.04     1200     50             3
+U155     155     Coal/Steam    0.04     960      40             4
+U197     197     Oil/Steam     0.05     950      50             4
+U350     350     Coal/Steam    0.08     1150    100             5
+U400     400     Nuclear       0.12     1100    150             6

@@ -1,0 +1,8 @@
+Table 14 - Data for Terminal Stations
+(Based on reference 4)
+
+Active  failure rate of a breaker (failure/year)  = 0.0066 
+Passive failure rate of a breaker (failure/year)  = 0.0005
+Maintenance rate of a breaker (outages/year)      = 0.2
+Maintenance time of a breaker (hours)             = 108
+Switching time - one or more components (hours)   = 1.0
