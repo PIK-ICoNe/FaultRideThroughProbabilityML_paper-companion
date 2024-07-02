@@ -1,5 +1,5 @@
 # Paper companion for paper: Predicting fault-ride-through probability of inverter-dominated power grids using machine learning
-The paper can be found at: https://arxiv.org/abs/2406.08917
+The paper can be found at: https://arxiv.org/abs/2406.08917.
 
 This GitHub repository includes code and data that allow you to explore the codebase and potentially reuse parts of it for future projects. You can find the complete code and data for reproducing the results at: https://zenodo.org/record/11193718.
 
