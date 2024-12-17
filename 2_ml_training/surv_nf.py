@@ -14,7 +14,7 @@ from torch_geometric.nn import to_hetero
 class dataset_v2(gDataset):
     def __init__(self, dataset_path, target_name, grid_type, slice_index, scaling=False, dtype="float32"):
         super(dataset_v2, self).__init__()
-        self.dataset_path = Path(PATHMISSING)
+        self.dataset_path = dataset_path
         self.target_name = target_name
         self.grid_type = grid_type
         self.dtype = dtype
@@ -34,22 +34,22 @@ class dataset_v2(gDataset):
         elif self.scaling == "standardize":
             file_to_read = '/ml_input_grid_data_homo_std.h5'
         elif self.scaling == False:
-            file_to_read = '/ml_input_grid_data_homo.h5'
+            file_to_read = '/input_data.h5'
         else:
             print("Error: Invalid scaling chosen")
 
         file_to_read = str(self.dataset_path) + file_to_read
         f = h5py.File(file_to_read, 'r')
-        dset_grids = f['grids']
+        dset_grids = f
         index_start = self.slice_index.start
         index_stop = self.slice_index.stop
         for index_grid in range(index_start, index_stop+1):
             edge_index = (np.array(dset_grids[str(index_grid)].get(
-                "edge_index"), dtype='int64') - 1).transpose()
+                "edge_index"), dtype='int64') - 1)
             node_features = np.array(dset_grids[str(index_grid)].get(
-                "node_features"), dtype=self.dtype).transpose()
+                "node_features"), dtype=self.dtype)
             line_properties = np.array(
-                dset_grids[str(index_grid)].get("edge_attr"), dtype=self.dtype)
+                dset_grids[str(index_grid)].get("edge_features"), dtype=self.dtype)
             targets = np.array(dset_grids[str(index_grid)]["targets"].get(
                 self.target_name), dtype=self.dtype)
             mask = np.array(dset_grids[str(index_grid)].get("mask"), dtype='int32')
@@ -117,61 +117,61 @@ class dataset_v2(gDataset):
 
 
 
-class dataset_v2_mlp(Dataset):
-    def __init__(self, dataset_path, target_name, slice_index, scaling=False, dtype="float32"):
-        super(dataset_v2_mlp, self).__init__()
-        self.scaling = scaling
-        self.dataset_path = Path(PATHMISSING)
-        self.target_name = target_name
-        self.dtype = dtype
-        self.slice_index = slice_index
-        self.scaling = scaling
-        self.input_data = {}
-        self.targets = {}
-        self.mask = {}
-        self.read_features_targets()
+# class dataset_v2_mlp(Dataset):
+#     def __init__(self, dataset_path, target_name, slice_index, scaling=False, dtype="float32"):
+#         super(dataset_v2_mlp, self).__init__()
+#         self.scaling = scaling
+#         self.dataset_path = dataset_path
+#         self.target_name = target_name
+#         self.dtype = dtype
+#         self.slice_index = slice_index
+#         self.scaling = scaling
+#         self.input_data = {}
+#         self.targets = {}
+#         self.mask = {}
+#         self.read_features_targets()
 
-    def read_features_targets(self):
-        if self.scaling == "normalize":
-            file_to_read =     '/ml_input_grid_data_homo_norm.h5'
-        elif self.scaling == "standardize":
-            file_to_read =     '/ml_input_grid_data_homo_std.h5'
-        elif self.scaling == False:
-            file_to_read =     '/ml_input_grid_data_homo.h5'
-        else :
-            print("Error: Invalid scaling chosen")
-
-
-        file_to_read = str(self.dataset_path) + file_to_read
-        f = h5py.File(file_to_read, 'r')
-        dset_grids = f['grids']
-        index_start = self.slice_index.start
-        index_stop = self.slice_index.stop
-        for index_grid in range(index_start, index_stop+1):
-            node_features = np.array(dset_grids[str(index_grid)].get(
-                "node_features"), dtype=self.dtype).transpose()
-            targets = np.array(dset_grids[str(index_grid)]["targets"].get(
-                self.target_name), dtype=self.dtype)
-            self.input_data[index_grid - index_start] = torch.tensor(node_features)
-            self.targets[index_grid - index_start] = torch.tensor(targets.transpose())
-            mask = np.array(dset_grids[str(index_grid)].get("mask"), dtype='int32')
-            self.mask[index_grid - index_start] = torch.tensor(mask > 0.1)
-
-    def __len__(self):
-        return len(self.input_data)
-
-    def __getitem__(self, idx):
-        return self.input_data[idx], self.targets[idx], self.mask[idx]
+#     def read_features_targets(self):
+#         if self.scaling == "normalize":
+#             file_to_read =     '/ml_input_grid_data_homo_norm.h5'
+#         elif self.scaling == "standardize":
+#             file_to_read =     '/ml_input_grid_data_homo_std.h5'
+#         elif self.scaling == False:
+#             file_to_read =     '/input_data.h5'
+#         else :
+#             print("Error: Invalid scaling chosen")
 
 
-def init_surv_nf_dataset(config, ieee=False):
+#         file_to_read = str(self.dataset_path) + file_to_read
+#         f = h5py.File(file_to_read, 'r')
+#         dset_grids = f['grids']
+#         index_start = self.slice_index.start
+#         index_stop = self.slice_index.stop
+#         for index_grid in range(index_start, index_stop+1):
+#             node_features = np.array(dset_grids[str(index_grid)].get(
+#                 "node_features"), dtype=self.dtype).transpose()
+#             targets = np.array(dset_grids[str(index_grid)]["targets"].get(
+#                 self.target_name), dtype=self.dtype)
+#             self.input_data[index_grid - index_start] = torch.tensor(node_features)
+#             self.targets[index_grid - index_start] = torch.tensor(targets.transpose())
+#             mask = np.array(dset_grids[str(index_grid)].get("mask"), dtype='int32')
+#             self.mask[index_grid - index_start] = torch.tensor(mask > 0.1)
+
+#     def __len__(self):
+#         return len(self.input_data)
+
+#     def __getitem__(self, idx):
+#         return self.input_data[idx], self.targets[idx], self.mask[idx]
+
+
+def init_surv_nf_dataset(config, ieee_eval=False):
 
     if "MLP::use_MLP" in config.keys():
         use_MLP = config["MLP::use_MLP"]
     else:
         use_MLP = False
 
-    ieee_eval = config["ieee_eval"]
+    # ieee_eval = config["ood_eval"]
     scaling = config["scaling"]
     train_slice = config["train_slice"]
     valid_slice = config["valid_slice"]
@@ -179,28 +179,28 @@ def init_surv_nf_dataset(config, ieee=False):
     task = config["task"]
     
     if use_MLP:
-        if ieeee == False:
-            train_set = dataset_v2_mlp(config[dataset_path = Path(PATHMISSING)
-            valid_set = dataset_v2_mlp(config[dataset_path = Path(PATHMISSING)
-            test_set = dataset_v2_mlp(config[dataset_path = Path(PATHMISSING)
+        if ieee_eval == False:
+            train_set = dataset_v2_mlp(config["dataset::path"], task, slice_index=train_slice, scaling=scaling, dtype=config["dtype"])
+            valid_set = dataset_v2_mlp(config["dataset::path"], task, slice_index=valid_slice, scaling=scaling, dtype=config["dtype"])
+            test_set = dataset_v2_mlp(config["dataset::path"], task, slice_index=test_slice, scaling=scaling, dtype=config["dtype"])
             return train_set, valid_set, test_set
         else:
             ieee_set = dataset_v2_mlp(config["dataset::ieee_path"], task, slice_index=test_slice, scaling=scaling, dtype=config["dtype"])
             return ieee_set
 
     else:
-        if ieee == False:
-            train_set = dataset_v2(config[dataset_path = Path(PATHMISSING)
+        if ieee_eval == False:
+            train_set = dataset_v2(config["dataset::path"], task, config["grid_type"],
                                         slice_index=train_slice, scaling=config["scaling"],  dtype=config["dtype"])
-            valid_set = dataset_v2(config[dataset_path = Path(PATHMISSING)
+            valid_set = dataset_v2(config["dataset::path"], task, config["grid_type"],
                                 slice_index=valid_slice, scaling=config["scaling"],  dtype=config["dtype"])
-            test_set = dataset_v2(config[dataset_path = Path(PATHMISSING)
+            test_set = dataset_v2(config["dataset::path"], task, config["grid_type"],
                                         slice_index=test_slice, scaling=config["scaling"],  dtype=config["dtype"])             
             if config["grid_type"] == "hetero":
                 config["hetero::datasample"] = train_set[0]
             return train_set, valid_set, test_set
         else:
-            ieee_set = dataset_v2(config["dataset::ieee_path"], task, config["grid_type"],
+            ieee_set = dataset_v2(config["dataset::ood_path"], task, config["grid_type"],
                                        slice_index=slice(1,1), scaling=config["ieee_scaling"],  dtype=config["dtype"])
             return ieee_set
 

@@ -427,7 +427,7 @@ function dynamic_simulation(r, N, pg, pg_state, sim_prop, plot_probability, pics
                 title_name = string("grid: ", r, " node: ", node, " pert: ", i)
                 plot_res_log(sol,  pg, node, title_name, image_text, sim_prop.threshold_ω_out_of_bounds, low_voltage_ride_through(sol.t), high_voltage_ride_through(sol.t); plot_angular_ω = true, axis_lims = false)
                 filename = joinpath(pics_directory, string("grid_", r, "_node_", node, "_idx_", i, ".png"))
-                savefig(filename)
+                Plots.savefig(filename)
             end
             GC.gc() # helps with the memory errors on slurm
         end

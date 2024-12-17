@@ -44,19 +44,9 @@ export check_eigenvalues, generate_nodal_admittance_matrix
 include("ride_through_curves.jl")
 export low_voltage_ride_through, high_voltage_ride_through
 
-# load functions to analyze results
-include("post_sim_analysis.jl")
-export read_grids_data, combine_data_one_df
-export get_idx_of_nodes
-export get_statistics_features_df
-export get_nodal_properties_df, get_line_properties_df
+include("postprocessing.jl")
+export collect_grid_sim_data!
 export all_thresholds
-export add_power_flow!
-export obtain_results, compute_statistics
-# prepare data for machine learning applications
-export prepare_grid_data_homo, prepare_grid_data_hetero
-export normalize_array, standardize_array
-
 
 include("compute_powerflow.jl")
 export get_power_flow_on_lines
